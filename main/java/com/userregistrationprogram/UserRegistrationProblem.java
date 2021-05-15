@@ -14,6 +14,7 @@ public class UserRegistrationProblem {
     //Regex Patterns
     private static final String FIRST_NAME_PATTERN = "^[A-Z][a-zA-Z]{3,}$";
     private static final String LAST_NAME_PATTERN = "^[A-Z][a-zA-Z]{3,}$";
+    private static final String EMAIL_ADDRESS = "^[a-z0-9]+(([.+-_][a-z0-9])?)+(@[a-z0-9]{1})+(.[a-z]{3,4})+((.[a-z]{2})?)$";
 
     /**
      * @description create method for producing the Result in terms of Valid or Invalid
@@ -21,9 +22,9 @@ public class UserRegistrationProblem {
      */
     public void printingResult() {
         if (result) { //Verifying whether given Result is valid
-            System.out.println("You Entered result is Proper and Valid");
+            System.out.println("You Entered Input is Proper and Valid");
         } else {
-            System.out.println("You Entered result is in Valid. Try again using Conditions");
+            System.out.println("You Entered Input is inValid. Try again using Conditions");
         }
     }
 
@@ -56,6 +57,21 @@ public class UserRegistrationProblem {
     }
 
     /**
+     * @description create method for EmailAddress Validation
+     * Rules: Email has 3 mandatory parts (abc, bl & co) and 2 optional (xyz & in) with
+     * precise @ and . positions
+     * E.g. abc.xyz@bl.co.in
+     */
+    private void eMailAddressValidation () {
+        System.out.println("Enter the Your Email Address");
+        String eMailAddress = sc.nextLine();
+        //Matching the given Email Address with regular expression
+        Pattern pattern = Pattern.compile(EMAIL_ADDRESS);
+        result = pattern.matcher(eMailAddress).matches();
+        printingResult();
+    }
+
+    /**
      * @description Main method to create the objects and for calling the methods
      * @param args
      */
@@ -64,5 +80,6 @@ public class UserRegistrationProblem {
         UserRegistrationProblem userRegistration = new UserRegistrationProblem();
         userRegistration.firstNameValidation();    //calling firstNameValidation Method
         userRegistration.lastNameValidation();     //calling lastNameValidation Method
+        userRegistration.eMailAddressValidation(); //calling EmailAddressValidation Method
     }
 }
