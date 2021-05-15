@@ -15,6 +15,7 @@ public class UserRegistrationProblem {
     private static final String FIRST_NAME_PATTERN = "^[A-Z][a-zA-Z]{3,}$";
     private static final String LAST_NAME_PATTERN = "^[A-Z][a-zA-Z]{3,}$";
     private static final String EMAIL_ADDRESS = "^[a-z0-9]+(([.+-_][a-z0-9])?)+(@[a-z0-9]{1})+(.[a-z]{3,4})+((.[a-z]{2})?)$";
+    private static final String MOBILE_FORMAT = "^[1-9]{2} [1-9][0-9]{9}$";
 
     /**
      * @description create method for producing the Result in terms of Valid or Invalid
@@ -72,6 +73,20 @@ public class UserRegistrationProblem {
     }
 
     /**
+     * @description create method for Mobile Number Validation
+     * Rule: Country code follow by space and 10 digit number
+     * E.g. 91 9919819801
+     */
+    private void mobileNumberValidation () {
+        System.out.println("Enter the Mobile Number");
+        String mobileNumber = sc.nextLine();
+        //Matching the given PhoneNumber with regular expression
+        Pattern pattern = Pattern.compile(MOBILE_FORMAT);
+        result = pattern.matcher(mobileNumber).matches();
+        printingResult();
+    }
+
+    /**
      * @description Main method to create the objects and for calling the methods
      * @param args
      */
@@ -81,5 +96,6 @@ public class UserRegistrationProblem {
         userRegistration.firstNameValidation();    //calling firstNameValidation Method
         userRegistration.lastNameValidation();     //calling lastNameValidation Method
         userRegistration.eMailAddressValidation(); //calling EmailAddressValidation Method
+        userRegistration.mobileNumberValidation(); //calling MobileNumber validation Method
     }
 }
