@@ -3,19 +3,17 @@ package com.userregistrationprogram;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
 
-@RunWith(Parameterized.class)
-public class ParameterizedUserRegistration {
+public class ParameterizedUserRegistrationTest {
     public final String validEmailTest;
     public final boolean expectedEmailResult;
     public UserRegistrationProblem userRegistrationProblem;
 
-    public ParameterizedUserRegistration(String email, boolean expectedEmailResult) {
+    public ParameterizedUserRegistrationTest(String email, boolean expectedEmailResult) {
         super();
         this.validEmailTest = email;
         this.expectedEmailResult = expectedEmailResult;
