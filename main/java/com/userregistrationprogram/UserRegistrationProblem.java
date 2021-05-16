@@ -27,7 +27,7 @@ public class UserRegistrationProblem {
             System.out.println("You Entered Input is Proper and Valid");
             return true;
         } else {
-            throw new UserRegistrationProblemException("You Entered Input is inValid. Try again using Conditions");
+             throw new UserRegistrationProblemException("You Entered Input is INValid,Try again with Conditions");
         }
     }
 
@@ -63,7 +63,7 @@ public class UserRegistrationProblem {
      * precise @ and . positions
      * E.g. abc.xyz@bl.co.in
      */
-    public boolean eMailAddressValidation (String eMailAddress) throws Exception {
+    public boolean eMailAddressValidation (String eMailAddress) throws Exception  {
         System.out.println("Test Your Email Address Regex Pattern");
         //Matching the given Email Address with regular expression
         Pattern pattern = Pattern.compile(EMAIL_ADDRESS);
