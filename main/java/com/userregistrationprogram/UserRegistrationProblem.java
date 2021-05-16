@@ -1,7 +1,11 @@
 package com.userregistrationprogram;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * @description Class for defining the User Registration with regex
@@ -9,7 +13,6 @@ import java.util.regex.Pattern;
  */
 public class UserRegistrationProblem {
     //constant
-    public static boolean result = false;
     private static final Scanner sc = new Scanner(System.in);
     //Regex Patterns
     private static final String FIRST_NAME_PATTERN = "^[A-Z][a-zA-Z]{3,}$";
@@ -19,29 +22,18 @@ public class UserRegistrationProblem {
     private static final String PASSWORD = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@~#$%^&*()]).{8,}$";
 
     /**
-     * @description create method for producing the Result in terms of Valid or Invalid
-     *
-     */
-    public boolean printingResult() throws Exception {
-        if (result) { //Verifying whether given Result is valid
-            System.out.println("You Entered Input is Proper and Valid");
-            return true;
-        } else {
-            throw new UserRegistrationProblemException("You Entered Input is Invalid, Try Again with Condition");
-        }
-    }
-
-    /**
      * @description create method for First Name Validation
      * Rule: first name starts with Cap and has minimum 3 characters
      *
      */
-    public boolean firstNameValidation (String firstName) throws Exception {
-        System.out.println("Test Your First Name Regex Pattern");
+    private void firstNameValidation ()  {
+        List<String> myList = Arrays.asList("Krishna","sahil","Bhaskar","Sowmith");
         //Matching the given name with regular expression
         Pattern pattern = Pattern.compile(FIRST_NAME_PATTERN);
-        result = pattern.matcher(firstName).matches();
-        return printingResult();
+        Predicate<String> predicate = pattern.asPredicate();
+        myList.forEach(firstName -> {
+            System.out.println("The Valid FirstName of " + firstName + " check for valid " + predicate.test(firstName));});
+
     }
 
     /**
@@ -49,12 +41,13 @@ public class UserRegistrationProblem {
      * Rule: first name starts with Cap and has minimum 3 characters
      *
      */
-    public boolean lastNameValidation (String lastName) throws Exception {
-        System.out.println("Test Your Last Name Regex Pattern");
+    private void lastNameValidation () {
+        List<String> myList = Arrays.asList("Maddimsetti","Mohammad","Nakkina","Narayana");
         //Matching the given name with regular expression
         Pattern pattern = Pattern.compile(LAST_NAME_PATTERN);
-        result = pattern.matcher(lastName).matches();
-        return printingResult();
+        Predicate<String> predicate = pattern.asPredicate();
+        myList.forEach(lastName -> {
+            System.out.println("The Valid LastName of " + lastName + " check for valid " + predicate.test(lastName));});
     }
 
     /**
@@ -63,12 +56,13 @@ public class UserRegistrationProblem {
      * precise @ and . positions
      * E.g. abc.xyz@bl.co.in
      */
-    public boolean eMailAddressValidation (String eMailAddress) throws Exception  {
-        System.out.println("Test Your Email Address Regex Pattern");
+    private void eMailAddressValidation ()  {
+        List<String> myList = Arrays.asList("maddimsetti143@gmail.com","abc.100@gmail.com","krishna@gmail.com","divya.ser345@gmail.au.in","%abc-@gmail.com.com");
         //Matching the given Email Address with regular expression
         Pattern pattern = Pattern.compile(EMAIL_ADDRESS);
-        result = pattern.matcher(eMailAddress).matches();
-            return printingResult();
+        Predicate<String> predicate = pattern.asPredicate();
+        myList.forEach(emailAddress -> {
+            System.out.println("The Valid Email Address of " + emailAddress + " check for valid " + predicate.test(emailAddress));});
     }
 
     /**
@@ -76,12 +70,13 @@ public class UserRegistrationProblem {
      * Rule: Country code follow by space and 10 digit number
      * E.g. 91 9919819801
      */
-    public boolean mobileNumberValidation (String mobileNumber) throws Exception {
-        System.out.println("Test Your MobileNumber Regex Pattern");
+    private void mobileNumberValidation ()  {
+        List<String> myList = Arrays.asList("91 9669874583","85 4785456152","451058478945","91 457845612","11 4561237895");
         //Matching the given PhoneNumber with regular expression
         Pattern pattern = Pattern.compile(MOBILE_FORMAT);
-        result = pattern.matcher(mobileNumber).matches();
-        return printingResult();
+        Predicate<String> predicate = pattern.asPredicate();
+        myList.forEach(mobileNumber -> {
+            System.out.println("The Valid Mobile Number of " + mobileNumber + " check for valid " + predicate.test(mobileNumber));});
     }
     /**
      * @description create method for Validating Password
@@ -90,25 +85,26 @@ public class UserRegistrationProblem {
      * Rule3:Should have at least 1 Numerical Number
      * Rule4: should have at least 1 Special Character
      */
-    public boolean passwordValidation (String password) throws Exception {
-        System.out.println("Test Your Password Regex Pattern");
+    private void passwordValidation ()  {
+        List<String> myList = Arrays.asList("Password@1","passw@rD123","password@123","PassWord123","Passw@RdEr","Passw@Redr123");
         //Matching the given password with regular expression
         Pattern pattern = Pattern.compile(PASSWORD);
-        result = pattern.matcher(password).matches();
-        return printingResult();
+        Predicate<String> predicate = pattern.asPredicate();
+        myList.forEach(password -> {
+            System.out.println("The Valid Password of " + password + " check for valid " + predicate.test(password));});
     }
 
     /**
      * @description Main method to create the objects and for calling the methods
      * @param args
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         System.out.println("Welcome to User Registration Program"); //Printing the Welcome Message
         UserRegistrationProblem userRegistration = new UserRegistrationProblem();
-        userRegistration.firstNameValidation(sc.nextLine());    //calling firstNameValidation Method
-        userRegistration.lastNameValidation(sc.nextLine());     //calling lastNameValidation Method
-        userRegistration.eMailAddressValidation(sc.nextLine()); //calling EmailAddressValidation Method
-        userRegistration.mobileNumberValidation(sc.nextLine()); //calling MobileNumber validation Method
-        userRegistration.passwordValidation(sc.nextLine());     //calling Password Validation Method
+        userRegistration.firstNameValidation();    //calling firstNameValidation Method
+        userRegistration.lastNameValidation();     //calling lastNameValidation Method
+        userRegistration.eMailAddressValidation(); //calling EmailAddressValidation Method
+        userRegistration.mobileNumberValidation(); //calling MobileNumber validation Method
+        userRegistration.passwordValidation();     //calling Password Validation Method
     }
 }
