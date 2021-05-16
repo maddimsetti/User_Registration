@@ -22,13 +22,12 @@ public class UserRegistrationProblem {
      * @description create method for producing the Result in terms of Valid or Invalid
      *
      */
-    public boolean printingResult() {
+    public boolean printingResult() throws Exception {
         if (result) { //Verifying whether given Result is valid
             System.out.println("You Entered Input is Proper and Valid");
             return true;
         } else {
-            System.out.println("You Entered Input is inValid. Try again using Conditions");
-            return false;
+            throw new UserRegistrationProblemException("You Entered Input is inValid. Try again using Conditions");
         }
     }
 
@@ -37,7 +36,7 @@ public class UserRegistrationProblem {
      * Rule: first name starts with Cap and has minimum 3 characters
      *
      */
-    public boolean firstNameValidation (String firstName) {
+    public boolean firstNameValidation (String firstName) throws Exception {
         System.out.println("Test Your First Name Regex Pattern");
         //Matching the given name with regular expression
         Pattern pattern = Pattern.compile(FIRST_NAME_PATTERN);
@@ -50,7 +49,7 @@ public class UserRegistrationProblem {
      * Rule: first name starts with Cap and has minimum 3 characters
      *
      */
-    public boolean lastNameValidation (String lastName) {
+    public boolean lastNameValidation (String lastName) throws Exception {
         System.out.println("Test Your Last Name Regex Pattern");
         //Matching the given name with regular expression
         Pattern pattern = Pattern.compile(LAST_NAME_PATTERN);
@@ -64,7 +63,7 @@ public class UserRegistrationProblem {
      * precise @ and . positions
      * E.g. abc.xyz@bl.co.in
      */
-    public boolean eMailAddressValidation (String eMailAddress) {
+    public boolean eMailAddressValidation (String eMailAddress) throws Exception {
         System.out.println("Test Your Email Address Regex Pattern");
         //Matching the given Email Address with regular expression
         Pattern pattern = Pattern.compile(EMAIL_ADDRESS);
@@ -77,7 +76,7 @@ public class UserRegistrationProblem {
      * Rule: Country code follow by space and 10 digit number
      * E.g. 91 9919819801
      */
-    public boolean mobileNumberValidation (String mobileNumber) {
+    public boolean mobileNumberValidation (String mobileNumber) throws Exception {
         System.out.println("Test Your MobileNumber Regex Pattern");
         //Matching the given PhoneNumber with regular expression
         Pattern pattern = Pattern.compile(MOBILE_FORMAT);
@@ -91,7 +90,7 @@ public class UserRegistrationProblem {
      * Rule3:Should have at least 1 Numerical Number
      * Rule4: should have at least 1 Special Character
      */
-    public boolean passwordValidation (String password) {
+    public boolean passwordValidation (String password) throws Exception {
         System.out.println("Test Your Password Regex Pattern");
         //Matching the given password with regular expression
         Pattern pattern = Pattern.compile(PASSWORD);
@@ -103,7 +102,7 @@ public class UserRegistrationProblem {
      * @description Main method to create the objects and for calling the methods
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("Welcome to User Registration Program"); //Printing the Welcome Message
         UserRegistrationProblem userRegistration = new UserRegistrationProblem();
         userRegistration.firstNameValidation(sc.nextLine());    //calling firstNameValidation Method
