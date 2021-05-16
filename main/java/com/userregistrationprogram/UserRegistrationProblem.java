@@ -16,6 +16,7 @@ public class UserRegistrationProblem {
     private static final String LAST_NAME_PATTERN = "^[A-Z][a-zA-Z]{3,}$";
     private static final String EMAIL_ADDRESS = "^[a-z0-9]+(([.+-_][a-z0-9])?)+(@[a-z0-9]{1})+(.[a-z]{3,4})+((.[a-z]{2})?)$";
     private static final String MOBILE_FORMAT = "^[1-9]{2} [1-9][0-9]{9}$";
+    private static final String PASSWORD = "^[A-Z0-9a-z]{8,}$";
 
     /**
      * @description create method for producing the Result in terms of Valid or Invalid
@@ -85,6 +86,19 @@ public class UserRegistrationProblem {
         result = pattern.matcher(mobileNumber).matches();
         printingResult();
     }
+    /**
+     * @description create method for Validating Password
+     * Rule1: minimum 8 Characters
+     *
+     */
+    private void passwordValidation () {
+        System.out.println("Enter the Password");
+        String password = sc.nextLine();
+        //Matching the given password with regular expression
+        Pattern pattern = Pattern.compile(PASSWORD);
+        result = pattern.matcher(password).matches();
+        printingResult();
+    }
 
     /**
      * @description Main method to create the objects and for calling the methods
@@ -97,5 +111,6 @@ public class UserRegistrationProblem {
         userRegistration.lastNameValidation();     //calling lastNameValidation Method
         userRegistration.eMailAddressValidation(); //calling EmailAddressValidation Method
         userRegistration.mobileNumberValidation(); //calling MobileNumber validation Method
+        userRegistration.passwordValidation();     //calling Password Validation Method
     }
 }
