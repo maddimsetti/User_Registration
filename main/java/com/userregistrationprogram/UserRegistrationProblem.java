@@ -16,7 +16,7 @@ public class UserRegistrationProblem {
     private static final String LAST_NAME_PATTERN = "^[A-Z][a-zA-Z]{3,}$";
     private static final String EMAIL_ADDRESS = "^[a-z0-9]+(([.+-_][a-z0-9])?)+(@[a-z0-9]{1})+(.[a-z]{3,4})+((.[a-z]{2})?)$";
     private static final String MOBILE_FORMAT = "^[1-9]{2} [1-9][0-9]{9}$";
-    private static final String PASSWORD = "^[A-Z0-9a-z]{8,}$";
+    private static final String PASSWORD = "^[A-Z{1,}0-9a-z]{8,}$";
 
     /**
      * @description create method for producing the Result in terms of Valid or Invalid
@@ -89,7 +89,7 @@ public class UserRegistrationProblem {
     /**
      * @description create method for Validating Password
      * Rule1: minimum 8 Characters
-     *
+     *Rule2:Should have at least 1 Upper Case
      */
     private void passwordValidation () {
         System.out.println("Enter the Password");
