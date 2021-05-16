@@ -22,11 +22,13 @@ public class UserRegistrationProblem {
      * @description create method for producing the Result in terms of Valid or Invalid
      *
      */
-    public void printingResult() {
+    public boolean printingResult() {
         if (result) { //Verifying whether given Result is valid
             System.out.println("You Entered Input is Proper and Valid");
+            return true;
         } else {
             System.out.println("You Entered Input is inValid. Try again using Conditions");
+            return false;
         }
     }
 
@@ -35,13 +37,12 @@ public class UserRegistrationProblem {
      * Rule: first name starts with Cap and has minimum 3 characters
      *
      */
-    private void firstNameValidation () {
-        System.out.println("Enter the First Name");
-        String firstName = sc.nextLine();
+    public boolean firstNameValidation (String firstName) {
+        System.out.println("Test Your First Name Regex Pattern");
         //Matching the given name with regular expression
         Pattern pattern = Pattern.compile(FIRST_NAME_PATTERN);
         result = pattern.matcher(firstName).matches();
-        printingResult();
+        return printingResult();
     }
 
     /**
@@ -49,13 +50,12 @@ public class UserRegistrationProblem {
      * Rule: first name starts with Cap and has minimum 3 characters
      *
      */
-    private void lastNameValidation () {
-        System.out.println("Enter the Last Name");
-        String lastName = sc.nextLine();
+    public boolean lastNameValidation (String lastName) {
+        System.out.println("Test Your Last Name Regex Pattern");
         //Matching the given name with regular expression
         Pattern pattern = Pattern.compile(LAST_NAME_PATTERN);
         result = pattern.matcher(lastName).matches();
-        printingResult();
+        return printingResult();
     }
 
     /**
@@ -64,13 +64,12 @@ public class UserRegistrationProblem {
      * precise @ and . positions
      * E.g. abc.xyz@bl.co.in
      */
-    private void eMailAddressValidation () {
-        System.out.println("Enter the Your Email Address");
-        String eMailAddress = sc.nextLine();
+    public boolean eMailAddressValidation (String eMailAddress) {
+        System.out.println("Test Your Email Address Regex Pattern");
         //Matching the given Email Address with regular expression
         Pattern pattern = Pattern.compile(EMAIL_ADDRESS);
         result = pattern.matcher(eMailAddress).matches();
-        printingResult();
+        return printingResult();
     }
 
     /**
@@ -78,28 +77,26 @@ public class UserRegistrationProblem {
      * Rule: Country code follow by space and 10 digit number
      * E.g. 91 9919819801
      */
-    private void mobileNumberValidation () {
-        System.out.println("Enter the Mobile Number");
-        String mobileNumber = sc.nextLine();
+    public boolean mobileNumberValidation (String mobileNumber) {
+        System.out.println("Test Your MobileNumber Regex Pattern");
         //Matching the given PhoneNumber with regular expression
         Pattern pattern = Pattern.compile(MOBILE_FORMAT);
         result = pattern.matcher(mobileNumber).matches();
-        printingResult();
+        return printingResult();
     }
     /**
      * @description create method for Validating Password
      * Rule1: minimum 8 Characters
-     *Rule2:Should have at least 1 Upper Case
+     * Rule2:Should have at least 1 Upper Case
      * Rule3:Should have at least 1 Numerical Number
      * Rule4: should have at least 1 Special Character
      */
-    private void passwordValidation () {
-        System.out.println("Enter the Password");
-        String password = sc.nextLine();
+    public boolean passwordValidation (String password) {
+        System.out.println("Test Your Password Regex Pattern");
         //Matching the given password with regular expression
         Pattern pattern = Pattern.compile(PASSWORD);
         result = pattern.matcher(password).matches();
-        printingResult();
+        return printingResult();
     }
 
     /**
@@ -109,10 +106,10 @@ public class UserRegistrationProblem {
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration Program"); //Printing the Welcome Message
         UserRegistrationProblem userRegistration = new UserRegistrationProblem();
-        userRegistration.firstNameValidation();    //calling firstNameValidation Method
-        userRegistration.lastNameValidation();     //calling lastNameValidation Method
-        userRegistration.eMailAddressValidation(); //calling EmailAddressValidation Method
-        userRegistration.mobileNumberValidation(); //calling MobileNumber validation Method
-        userRegistration.passwordValidation();     //calling Password Validation Method
+        userRegistration.firstNameValidation(sc.nextLine());    //calling firstNameValidation Method
+        userRegistration.lastNameValidation(sc.nextLine());     //calling lastNameValidation Method
+        userRegistration.eMailAddressValidation(sc.nextLine()); //calling EmailAddressValidation Method
+        userRegistration.mobileNumberValidation(sc.nextLine()); //calling MobileNumber validation Method
+        userRegistration.passwordValidation(sc.nextLine());     //calling Password Validation Method
     }
 }
